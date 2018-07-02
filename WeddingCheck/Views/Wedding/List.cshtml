@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WeddingViewModel>
+
+@{
+    ViewData["Title"] = "";
+}
+<br />
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Accompanied)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Relationship)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Accompanied</td>
+                    <td>@item.Seat</td>
+                    <td>@item.Relationship</td>
+                    <td>@item.Note</td>
+                    <td>
+                        @if (item.Checkin != 0)
+                        {
+                            <p>已報到</p>
+                        }
+                        else
+                        {
+                            <p style="color:red;">未報到</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

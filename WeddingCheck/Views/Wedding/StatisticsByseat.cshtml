@@ -1,0 +1,52 @@
+﻿
+@{
+
+}
+<div class="row">
+    <div class="col-sm-6">
+        <h3>各桌總人數</h3>
+        <table class="table" border="1" align="center">
+            <thead>
+
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.seat)
+            {
+                <tr>
+
+                    <td style="font-size:20px;text-align:center">@item.Key</td>
+                    <td style="font-size:20px;text-align:center">@item.Value</td>
+
+
+
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <h3>各桌報到人數</h3>
+        <table class="table" border="1" align="center">
+            <thead>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.seatCheck)
+            {
+                <tr>
+
+                    <td style="font-size:20px;text-align:center">@item.Key</td>
+                    <td style="font-size:20px;text-align:center">@item.Value</td>
+
+
+
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+

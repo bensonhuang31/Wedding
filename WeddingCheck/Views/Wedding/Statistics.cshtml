@@ -1,0 +1,62 @@
+﻿@model WeddingCountViewModel
+
+@{
+    var total = @Html.DisplayFor(model => model.Total);
+    var Actual = @Html.DisplayFor(model => model.Actual);
+    var aaa = @Html.DisplayFor(model => model.Actual);
+    var Absentee = @Html.DisplayFor(model => model.Absentee);
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="font-size:20px">總人數</th>
+            <th style="font-size:20px">已報到</th>
+            <th style="font-size:20px">未報到</th>
+            <th style="font-size:20px">報到率</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="vertical-align: middle;font-size:20px">@total</td>
+            <td style="vertical-align: middle;font-size:20px">@Actual</td>
+            <td style="vertical-align: middle;font-size:20px">@Absentee</td>
+            <td style="vertical-align: middle;color:red;font-size:20px">@ViewBag.Attendancerate%</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<canvas id="myChart" style="height:200px;width: 400px;"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(document.getElementById("myChart"), {
+        type: 'bar',
+        data: {
+            labels: ["Total", "Actual", "Absentee"],
+            datasets: [
+                {
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#60a15e", "#3cba9f"],
+                    data: [@total,@Actual,@Absentee],
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Wedding Statictics'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
